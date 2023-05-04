@@ -1,6 +1,6 @@
-package hackathon.nttdata.coderpath.services;
+package hackathon.nttdata.coderpath.alumnowebflux.services;
 
-import hackathon.nttdata.coderpath.documents.Alumno;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

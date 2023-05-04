@@ -1,4 +1,4 @@
-package hackathon.nttdata.coderpath.documents;
+package hackathon.nttdata.coderpath.alumnowebflux.documents;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

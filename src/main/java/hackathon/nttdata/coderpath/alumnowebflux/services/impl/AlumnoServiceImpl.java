@@ -1,13 +1,13 @@
-package hackathon.nttdata.coderpath.services.impl;
+package hackathon.nttdata.coderpath.alumnowebflux.services.impl;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hackathon.nttdata.coderpath.documents.Alumno;
-import hackathon.nttdata.coderpath.repository.AlumnoRepository;
-import hackathon.nttdata.coderpath.services.AlumnoService;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
+import hackathon.nttdata.coderpath.alumnowebflux.repository.AlumnoRepository;
+import hackathon.nttdata.coderpath.alumnowebflux.services.AlumnoService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

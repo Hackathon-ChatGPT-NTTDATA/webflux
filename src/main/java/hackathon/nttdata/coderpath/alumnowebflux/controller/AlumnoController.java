@@ -2,8 +2,8 @@ package hackathon.nttdata.coderpath.alumnowebflux.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import hackathon.nttdata.coderpath.documents.Alumno;
-import hackathon.nttdata.coderpath.services.AlumnoService;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
+import hackathon.nttdata.coderpath.alumnowebflux.services.AlumnoService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import java.util.Date;

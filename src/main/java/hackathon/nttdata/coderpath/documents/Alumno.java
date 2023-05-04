@@ -22,7 +22,6 @@ public class Alumno {
 
 	private String email;
 
-	private Date creatAt;
 
 	private String rutafoto;
 	

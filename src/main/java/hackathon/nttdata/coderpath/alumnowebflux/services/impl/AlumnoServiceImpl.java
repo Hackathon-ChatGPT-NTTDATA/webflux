@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class AlumnoServiceImpl implements AlumnoService {
 
 	@Autowired
-	AlumnoRepository repository;
+	private AlumnoRepository repository;
 
 	@Override
 	public Mono<Alumno> findById(String id) {

@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AlumnoController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AlumnoController.class);
 
-
+	@Autowired
 	private AlumnoService service;
 
 	@Value("${config.balanceador.test}")

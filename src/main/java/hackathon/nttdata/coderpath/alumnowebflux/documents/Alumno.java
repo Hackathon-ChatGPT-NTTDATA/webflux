@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Data
 @AllArgsConstructor
@@ -23,8 +25,12 @@ public class Alumno {
     private String apellido;
 
     private String email;
-
-
+    
+ 
+	@JsonIgnore
+	private byte[] foto;
+	
+	
     private String rutafoto;
 
 

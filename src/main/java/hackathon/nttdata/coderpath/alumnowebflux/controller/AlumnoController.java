@@ -38,7 +38,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @RequiredArgsConstructor
 //*@CrossOrigin({"*"})
-@CrossOrigin({"http://localhost:4200"})
+//-@CrossOrigin({"http://localhost:4200"})
 public class AlumnoController {
 
 	private final AlumnoService service;

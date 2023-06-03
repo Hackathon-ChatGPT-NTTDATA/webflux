@@ -1,7 +1,5 @@
  
 spring:
-  profiles:
-    active: dev
   application:
     name: alumnowebflux
   cloud:
@@ -14,3 +12,4 @@ spring:
     location: classpath:banner/banner.txt
     image:
      location: classpath:fotocreador/microservicios.png  
+     

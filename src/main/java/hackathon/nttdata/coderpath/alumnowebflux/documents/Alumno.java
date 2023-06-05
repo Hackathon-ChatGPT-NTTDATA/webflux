@@ -37,4 +37,16 @@ public class Alumno {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
+
+	public Alumno(String nombre, String apellido, String email, String rutafoto, Date createAt) {
+	
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.rutafoto = rutafoto;
+		this.createAt = createAt;
+	}
+    
+    
+
 }

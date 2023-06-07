@@ -2,6 +2,7 @@ package hackathon.nttdata.coderpath.alumnowebflux.controller;
 
 import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
 import hackathon.nttdata.coderpath.alumnowebflux.services.AlumnoService;
+import hackathon.nttdata.coderpath.alumnowebflux.services.impl.KafkaProducer;
 import hackathon.nttdata.coderpath.alumnowebflux.util.Utileria;
 
 import java.io.IOException;
@@ -42,6 +43,25 @@ import reactor.core.publisher.Mono;
 public class AlumnoController {
 
 	private final AlumnoService service;
+
+	private final KafkaProducer producer;
+
+	@PostMapping("/producer/{topic}")
+	public ResponseEntity<Mono<?>> publishMessage(@PathVariable String topic, @Valid @RequestBody String message) {
+		Mono.just(producer).doOnNext(t -> {
+
+			t.publishMessage(topic, message);
+
+		}).onErrorReturn(producer).onErrorResume(e -> Mono.just(producer))
+				.onErrorMap(f -> new InterruptedException(f.getMessage())).subscribe(x -> log.info(x.toString()));
+
+		Mono<String> pAsset = Mono.just(message);
+
+		if (pAsset != null) {
+			return new ResponseEntity<>(pAsset, HttpStatus.CREATED);
+		}
+		return new ResponseEntity<>(Mono.just(new Alumno()), HttpStatus.I_AM_A_TEAPOT);
+	}
 
 	@GetMapping("/balanceador-test")
 	public ResponseEntity<?> balanceadorTest() {

@@ -25,7 +25,9 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		System.out.println("-------------------Ejemplo 1------------------------------------");
+		ejemplo1();
+		System.out.println("--------------------------------------------------------");
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
 		*  .doOnNext(elemento -> System.out.println(elemento));
 	   		
@@ -76,6 +78,14 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 	*/		
 		
 		
+	
+		
+		
+		
+
+}
+	
+	public void ejemplo1() {
 		Flux<Alumno> nombres = Flux.just("Joffre As" , "tangiro Yamaka" , "Yagami Lie" , "Mila Happy" , "Diego" , "Felix" , "Tangiro Yamaka" , "Pedro Pucho" , "Jose lan")
 				.map(nombre -> new Alumno (nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase(), null, null, null))
 				.filter(Alumno -> Alumno.getNombre().toLowerCase().equals("tangiro"))
@@ -99,11 +109,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 				public void run() {
 					log.info("has finalizado la ejecuciuon del observable con exito!");
 				}
-			});
-		
-		
-		
-
-}
+			});	
+	}
 
 }

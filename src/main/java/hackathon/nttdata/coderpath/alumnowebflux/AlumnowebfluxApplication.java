@@ -27,32 +27,39 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("-------------------Ejemplo 1------------------------------------");
 		ejemplo1();
-		System.out.println("--------------------------------------------------------");
+		System.out.println("-------------------Ejemplo 2------------------------------------");
+		ejemplo1();
+		System.out.println("-------------------Ejemplo 3------------------------------------");
+		ejemplo3();
+	}
+		
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
 		*  .doOnNext(elemento -> System.out.println(elemento));
 	   		
-		*nombres.subscribe(log::info);
+		nombres.subscribe(log::info);
+		*/	
+		public void ejemplo1() {
+			
+		 Flux<String> nombres = Flux.just("Joffre" , "tangiro" , "Mila" , "Diego" , "Fox" , "Mario" , "Fuigi" , "Juan")
+		 .doOnNext(err -> {
+			if(err.isEmpty()) {
+			throw new RuntimeException("nombres no pueden ser vacios");
+						}
+			{System.out.println(err);}});
 	
-		* Flux<String> nombres = Flux.just("Joffre" , "tangiro" , "Mila" , "Diego" , "Fox" , "Mario" , "Fuigi" , "Juan")
-		* .doOnNext(err -> {
-		*	if(err.isEmpty()) {
-		*	throw new RuntimeException("nombres no pueden ser vacios");
-		*				}
-		*	{System.out.println(err);}});
-	
-		* nombres.subscribe(err -> log.info(err),
-	    * 	error -> log.error(error.getMessage()),
-	    * new Runnable() {
+		 nombres.subscribe(err -> log.info(err),
+	     	error -> log.error(error.getMessage()),
+	     new Runnable() {
 					
-	    *@Override
-	    *public void run() {
-	    *log.info("¡se a modificado la expersiòn con exito!");						
-	    *}}
+	    @Override
+	    public void run() {
+	    log.info("¡se a modificado la expersiòn con exito!");						
+	    }}
 	    );
-	    */
-
-
-	/*	Flux<Alumno> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
+		}
+		
+		public void ejemplo2() {
+		Flux<Alumno> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
 				.map(nombre -> new Alumno (nombre.toUpperCase(), null, null, null, null))
 				.doOnNext(alumno -> {
 					if( alumno == null) {
@@ -75,18 +82,10 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 					log.info("has finalizado la ejecuciuon del observable con exito!");
 				}
 			});
-	*/		
-		
-		
+		}
 	
-		
-		
-		
-
-}
-	
-	public void ejemplo1() {
-		Flux<Alumno> nombres = Flux.just("Joffre As" , "tangiro Yamaka" , "Yagami Lie" , "Mila Happy" , "Diego" , "Felix" , "Tangiro Yamaka" , "Pedro Pucho" , "Jose lan")
+	public void ejemplo3() {
+		Flux<Alumno> nombres = Flux.just("Joffre As" , "tangiro Yamaka" , "Yagami Lie" , "Mila Happy" , "Diego SANTOS" , "Felix" , "Tangiro Yamaka" , "Pedro Pucho" , "Jose lan")
 				.map(nombre -> new Alumno (nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase(), null, null, null))
 				.filter(Alumno -> Alumno.getNombre().toLowerCase().equals("tangiro"))
 				.doOnNext(alumno -> {
@@ -110,6 +109,6 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 					log.info("has finalizado la ejecuciuon del observable con exito!");
 				}
 			});	
+	
 	}
-
 }

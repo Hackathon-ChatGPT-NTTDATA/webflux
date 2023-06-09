@@ -3,7 +3,7 @@ spring:
     name: alumnowebflux
   cloud:
     config:
-      enabled: true
+      
       uri: http://localhost:7000    
       label: master
      # uri: ${CONFIG_SERVER_URI://localhost:7000}

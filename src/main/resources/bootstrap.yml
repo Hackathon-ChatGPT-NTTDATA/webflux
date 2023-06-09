@@ -1,4 +1,3 @@
- 
 spring:
   application:
     name: alumnowebflux
@@ -12,4 +11,5 @@ spring:
     location: classpath:banner/banner.txt
     image:
      location: classpath:fotocreador/microservicios.png  
-     
+   
+

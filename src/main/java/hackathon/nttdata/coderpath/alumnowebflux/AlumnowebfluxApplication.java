@@ -28,7 +28,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		System.out.println("-------------------Ejemplo 1------------------------------------");
 		ejemplo1();
 		System.out.println("-------------------Ejemplo 2------------------------------------");
-		ejemplo1();
+		ejemplo2();
 		System.out.println("-------------------Ejemplo 3------------------------------------");
 		ejemplo3();
 	}

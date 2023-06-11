@@ -11,7 +11,11 @@ import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
 import lombok.RequiredArgsConstructor;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -28,10 +32,18 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		System.out.println("-------------------Ejemplo 1------------------------------------");
 		ejemplo1();
 		System.out.println("-------------------Ejemplo 2------------------------------------");
-		ejemplo2();
+		ejemplo1();
 		System.out.println("-------------------Ejemplo 3------------------------------------");
 		ejemplo3();
-	}
+		System.out.println("-------------------Ejemplo 4------------------------------------");
+		ejemplo4();
+		System.out.println("-------------------Ejemplo 5------------------------------------");
+		ejemplo5();
+		System.out.println("-------------------Ejemplo 6------------------------------------");
+		ejemplo6();
+		System.out.println("-------------------ejemplo 7------------------------------------");
+		ejemplo7();
+		}
 		
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
 		*  .doOnNext(elemento -> System.out.println(elemento));
@@ -85,9 +97,9 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		}
 	
 	public void ejemplo3() {
-		Flux<Alumno> nombres = Flux.just("Joffre As" , "tangiro Yamaka" , "Yagami Lie" , "Mila Happy" , "Diego SANTOS" , "Felix" , "Tangiro Yamaka" , "Pedro Pucho" , "Jose lan")
+		Flux<Alumno> nombres = Flux.just("Joffre As" , "Tangiro Yamaka" , "Yagami Lie" , "Mila Happy" , "Diego SANTOS" , "Felix Shell" , "Tangiro Yanaka" , "Pedro Pucho" , "Jose lan")
 				.map(nombre -> new Alumno (nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase(), null, null, null))
-				.filter(Alumno -> Alumno.getNombre().toLowerCase().equals("tangiro"))
+				.filter(Alumno -> Alumno.getNombre().toLowerCase().equals("Tangiro"))
 				.doOnNext(alumno -> {
 					if( alumno == null) {
 					
@@ -109,6 +121,143 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 					log.info("has finalizado la ejecuciuon del observable con exito!");
 				}
 			});	
-	
+		
+	}
+
+	public void ejemplo4() {
+		Flux<String> nombres = Flux.just("Joffre As" , "Tangiro Yamaka" , "Yagami Lie" , "Mila Happy" , "Diego SANTOS" , "Felix Jantaro" ,
+						"Tangiro Mosque" , "Pedro Pucho" , "Jose lan");
+		Flux<Alumno> alumnos = nombres.map(nombre -> new Alumno(nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase(), null,
+						null, null))
+				.filter(Alumno -> Alumno.getNombre().toLowerCase().equalsIgnoreCase("tangiro"))
+				.doOnNext(alumno -> {
+					if (alumno == null) {
+
+						throw new RuntimeException("Nombre no pueden ser vacios");
+					}
+					System.out.println(alumno.getNombre().concat(" ").concat(alumno.getApellido()));
+				})
+				.map(alumno -> {
+					String nombre = alumno.getNombre().toLowerCase();
+					alumno.setNombre(nombre);
+					return alumno;
+				});
+		alumnos.subscribe(e -> log.info(e.toString()), error -> log.error(error.getMessage()), 
+				new Runnable() {
+
+			@Override
+			public void run() {
+				log.info("has finalizado la ejecuciuon del observable con exito!");
+			}
+			});
+		
+				
+	}
+	/*UTILIZANDO UN ARRAY LIST  PARA  HACER UNA CUNSULATA EN BASE DE DATOS RETORNARA UN LISTA DE OBJETOS  */
+	public void ejemplo5() {
+		List<String> usuarioList = new ArrayList<>();
+		usuarioList.add("Joffre As");
+		usuarioList.add("Tangiro Yamaka");
+		usuarioList.add("Yagami Lie");
+		usuarioList.add("Mila Happy");
+		usuarioList.add("Diego SANTOS");
+		usuarioList.add("Tangiro Mosque");
+		usuarioList.add("Pedro Pucho");
+		usuarioList.add("Jose lan");
+		
+		
+		Flux<String> nombres = Flux.fromIterable(usuarioList);
+		Flux<Alumno> alumnos = nombres.map(nombre -> new Alumno(nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase(), null,
+						null, null))
+				.filter(Alumno -> Alumno.getNombre().toLowerCase().equalsIgnoreCase("tangiro"))
+				.doOnNext(alumno -> {
+					if (alumno == null) {
+
+						throw new RuntimeException("Nombre no pueden ser vacios");
+					}
+					System.out.println(alumno.getNombre().concat(" ").concat(alumno.getApellido()));
+				})
+				.map(alumno -> {
+					String nombre = alumno.getNombre().toLowerCase();
+					alumno.setNombre(nombre);
+					return alumno;
+				});
+		alumnos.subscribe(e -> log.info(e.toString()), error -> log.error(error.getMessage()), 
+				new Runnable() {
+
+			@Override
+			public void run() {
+				log.info("has finalizado la ejecuciuon del observable con exito!");
+			}
+			});
+		
+				
+	}
+	/*OPERADOR FLATMAP combierte a otro flujo mono o flux  */
+	public void ejemplo6() {
+		
+		
+		List<String> usuariosList = new ArrayList<>();
+		usuariosList.add("Joffre As");
+		usuariosList.add("Tangiro Yamaka");
+		usuariosList.add("Yagami Lie");
+		usuariosList.add("Mila Happy");
+		usuariosList.add("Diego SANTOS");
+		usuariosList.add("Tangiro Mosque");
+		usuariosList.add("Pedro Pucho");
+		usuariosList.add("Jose lan");
+		
+		
+		Flux.fromIterable(usuariosList)
+				.map(nombre -> new Alumno(nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase(), null, null, null))
+				.flatMap(alumno -> {
+					if (alumno.getNombre().equalsIgnoreCase("tangiro")) {
+						return Mono.just(alumno);
+					}else{
+						return Mono.empty();
+					}
+				})
+				
+				.map(alumno -> {
+					String nombre = alumno.getNombre().toLowerCase();
+					alumno.setNombre(nombre);
+					return alumno;
+				})
+		        .subscribe(u ->log.info(u.toString()));
+		
+				
+	}
+	public void ejemplo7() {
+		
+		
+		List<Alumno> alumnosList = new ArrayList<>();
+		alumnosList.add(new Alumno("Joffre", "As"));
+		alumnosList.add(new Alumno("Tangiro", "Yamaka"));
+		alumnosList.add(new Alumno("Yagami", "Lie"));
+		alumnosList.add(new Alumno("Mila", "Happy"));
+		alumnosList.add(new Alumno("Diego", "SANTOS"));
+		alumnosList.add(new Alumno("Tangiro", "Mosque"));
+		alumnosList.add(new Alumno("Pedro", "Pucho"));
+		alumnosList.add(new Alumno("Jose", "lan"));
+		
+		
+		Flux.fromIterable(alumnosList)
+				.map(alumno -> alumno.getNombre().toUpperCase().concat(" ").concat(alumno.getApellido().toUpperCase()))
+				.flatMap(alumno -> {
+					if (alumno.contains("tangiro".toUpperCase())) {
+						return Mono.just(alumno);
+					}else{
+						return Mono.empty();
+					}
+				})
+				
+				.map(nombre -> {
+					
+				
+					return nombre.toLowerCase();
+				})
+		        .subscribe(a ->log.info(a.toString()));
+		
+				
 	}
 }

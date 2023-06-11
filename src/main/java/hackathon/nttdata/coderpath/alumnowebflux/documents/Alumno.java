@@ -46,7 +46,13 @@ public class Alumno {
 		this.rutafoto = rutafoto;
 		this.createAt = createAt;
 	}
-    
+
+
+	public Alumno(String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
     
 
 }

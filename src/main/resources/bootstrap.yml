@@ -1,9 +1,10 @@
+ 
 spring:
   application:
     name: alumnowebflux
   cloud:
     config:
-      
+      enabled: true
       uri: http://localhost:7000    
       label: master
      # uri: ${CONFIG_SERVER_URI://localhost:7000}
@@ -11,5 +12,4 @@ spring:
     location: classpath:banner/banner.txt
     image:
      location: classpath:fotocreador/microservicios.png  
-   
-
+     

@@ -231,18 +231,19 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		
 		
 		List<Alumno> alumnosList = new ArrayList<>();
-		alumnosList.add(new Alumno("Joffre", "As"));
-		alumnosList.add(new Alumno("Tangiro", "Yamaka"));
-		alumnosList.add(new Alumno("Yagami", "Lie"));
-		alumnosList.add(new Alumno("Mila", "Happy"));
-		alumnosList.add(new Alumno("Diego", "SANTOS"));
-		alumnosList.add(new Alumno("Tangiro", "Mosque"));
-		alumnosList.add(new Alumno("Pedro", "Pucho"));
-		alumnosList.add(new Alumno("Jose", "lan"));
+		 alumnosList.add(new Alumno(null, "Joffre", "As", null, null, null,null));		
+		 alumnosList.add(new Alumno(null, "Tangiro", "Yamaka", null, null, null,null)); 
+		 alumnosList.add(new Alumno(null, "Yagami", "Lie", null, null, null,null)); 
+		 alumnosList.add(new Alumno(null, "Mila", "Happy", null, null, null,null));
+		 alumnosList.add(new Alumno(null, "Diego", "SANTOS", null, null, null,null)); 
+		 alumnosList.add(new Alumno(null, "Tangiro", "Mosque", null, null, null,null)); 
+		  alumnosList.add(new Alumno(null, "Pedro", "Pucho", null, null, null,null));
+		  alumnosList.add(new Alumno(null, "Jose", "lan", null, null, null,null));
+		
 		
 		
 		Flux.fromIterable(alumnosList)
-				.map(alumno -> alumno.getNombre().toUpperCase().concat(" ").concat(alumno.getApellido().toUpperCase()))
+				.map(nombre -> nombre.getNombre().toUpperCase().concat(" ").concat(nombre.getApellido().toUpperCase()))
 				.flatMap(alumno -> {
 					if (alumno.contains("tangiro".toUpperCase())) {
 						return Mono.just(alumno);
@@ -251,12 +252,10 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 					}
 				})
 				
-				.map(nombre -> {
-					
-				
+				.map(nombre -> {				
 					return nombre.toLowerCase();
 				})
-		        .subscribe(a ->log.info(a.toString()));
+		        .subscribe(n ->log.info(n.toString()));
 		
 				
 	}

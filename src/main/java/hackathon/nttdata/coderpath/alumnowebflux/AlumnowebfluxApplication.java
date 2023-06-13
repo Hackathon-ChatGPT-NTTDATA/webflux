@@ -256,7 +256,6 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 					return nombre.toLowerCase();
 				})
 		        .subscribe(n ->log.info(n.toString()));
-		
-				
+						
 	}
 }

@@ -33,8 +33,5 @@ public class CustomerModel {
 		this.taxId = taxId;
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
-		
-	
-
-}
+			}
 }

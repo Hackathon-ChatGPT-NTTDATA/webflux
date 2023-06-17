@@ -1,0 +1,52 @@
+package hackathon.nttdata.coderpath.alumnowebflux.controller.handler;
+
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import hackathon.nttdata.coderpath.alumnowebflux.controller.validation.ObjectValidator;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.codewebflux.Product;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.codewebflux.dto.ProductDto;
+import hackathon.nttdata.coderpath.alumnowebflux.services.ProductService;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Component
+@Slf4j
+@RequiredArgsConstructor
+public class ProductHandler {
+	 private final ProductService productService;
+
+	    private final ObjectValidator objectValidator;
+
+	    public Mono<ServerResponse> getAll(ServerRequest request) {
+	        Flux<Product> products = productService.getAll();
+	        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(products, Product.class);
+	    }
+
+	    public Mono<ServerResponse> getOne(ServerRequest request) {
+	        int id = Integer.valueOf(request.pathVariable("id"));
+	        Mono<Product> product = productService.getById(id);
+	        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(product, Product.class);
+	    }
+
+	    public Mono<ServerResponse> save(ServerRequest request) {
+	        Mono<ProductDto> dtoMono = request.bodyToMono(ProductDto.class).doOnNext(objectValidator::validate);
+	        return dtoMono.flatMap(productDto -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(productService.save(productDto), Product.class));
+	    }
+
+	    public Mono<ServerResponse> update(ServerRequest request) {
+	        int id = Integer.valueOf(request.pathVariable("id"));
+	        Mono<ProductDto> dtoMono = request.bodyToMono(ProductDto.class).doOnNext(objectValidator::validate);
+	        return dtoMono.flatMap(productDto -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(productService.update(id, productDto), Product.class));
+	    }
+
+	    public Mono<ServerResponse> delete(ServerRequest request) {
+	        int id = Integer.valueOf(request.pathVariable("id"));
+	        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(productService.delete(id), Product.class);
+	    }
+}

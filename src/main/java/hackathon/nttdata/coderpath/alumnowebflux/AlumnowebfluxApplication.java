@@ -258,4 +258,6 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		        .subscribe(n ->log.info(n.toString()));
 						
 	}
+	
+	
 }

@@ -12,8 +12,8 @@ import hackathon.nttdata.coderpath.alumnowebflux.repository.code.ProductReposito
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Service
 @Slf4j
+@Service
 @RequiredArgsConstructor
 public class ProductService {
 	   private final static String NF_MESSAGE = "product not found";

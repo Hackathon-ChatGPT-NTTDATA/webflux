@@ -1,5 +1,6 @@
 package hackathon.nttdata.coderpath.alumnowebflux;
 
+import org.apache.commons.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -7,7 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+import com.google.common.eventbus.Subscribe;
+
 import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.Comentarios;
 import lombok.RequiredArgsConstructor;
 
 import reactor.core.publisher.Flux;
@@ -16,6 +20,7 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Flow.Subscriber;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -43,6 +48,10 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		ejemplo6();
 		System.out.println("-------------------ejemplo 7------------------------------------");
 		ejemplo7();
+		System.out.println("-------------------ejemplo 8------------------------------------");
+		ejemplo8();
+		System.out.println("-------------------ejemplo 9------------------------------------");
+		ejemplo9();
 		}
 		
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
@@ -260,4 +269,40 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 	}
 	
 	
-}
+	public void ejemplo8() {
+		
+		
+		List<Alumno> alumnosList = new ArrayList<>();
+		 alumnosList.add(new Alumno(null, "Joffre", "As", null, null, null,null));		
+		 alumnosList.add(new Alumno(null, "Tangiro", "Yamaka", null, null, null,null)); 
+		 alumnosList.add(new Alumno(null, "Yagami", "Lie", null, null, null,null)); 
+		 alumnosList.add(new Alumno(null, "Mila", "Happy", null, null, null,null));
+		 alumnosList.add(new Alumno(null, "Diego", "SANTOS", null, null, null,null)); 
+		 alumnosList.add(new Alumno(null, "Tangiro", "Mosque", null, null, null,null)); 
+		  alumnosList.add(new Alumno(null, "Pedro", "Pucho", null, null, null,null));
+		  alumnosList.add(new Alumno(null, "Jose", "lan", null, null, null,null));
+		  
+		  Flux.fromIterable(alumnosList)
+		  .collectList()
+		  .subscribe(lista ->{ 
+		  lista.forEach(item -> log.info(item.toString()));
+		  });
+	}
+		  	
+			
+				
+		  public void ejemplo9() {
+			 
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()->new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
+		    	  Comentarios comentarios = new Comentarios();
+		    	  comentarios.addComentario("¡hola Yagami, que tal!");
+		    	  comentarios.addComentario("¡alumno registrado!");
+		    	  comentarios.addComentario("¡alumno registrado!");
+		    	  return comentarios;
+		      });
+		      AlumnoMono.flatMap(a -> comentariosAlumnoMono.map(c -> new AlumnoComentarios(a, c)))
+		      .subscribe();
+		  }
+			}
+	

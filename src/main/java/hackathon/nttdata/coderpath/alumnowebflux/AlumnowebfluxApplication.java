@@ -51,7 +51,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		System.out.println("-------------------ejemplo 8------------------------------------");
 		ejemplo8();
 		System.out.println("-------------------ejemplo 9------------------------------------");
-		ejemplo9();
+	//	ejemplo9();
 		}
 		
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
@@ -290,19 +290,20 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 	}
 		  	
 			
-				
-		  public void ejemplo9() {
-			 
-		      Mono<Alumno> alumnoMono = Mono.fromCallable(()->new Alumno(null, "Yagami", "Lie", null, null, null,null));
-		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
-		    	  Comentarios comentarios = new Comentarios();
-		    	  comentarios.addComentario("¡hola Yagami, que tal!");
-		    	  comentarios.addComentario("¡alumno registrado!");
-		    	  comentarios.addComentario("¡alumno registrado!");
-		    	  return comentarios;
-		      });
-		      AlumnoMono.flatMap(a -> comentariosAlumnoMono.map(c -> new AlumnoComentarios(a, c)))
-		      .subscribe();
-		  }
+	/*
+	 * public void ejemplo9() {
+	 * 
+	 * Mono<Alumno> alumnoMono = Mono.fromCallable(()->new Alumno(null, "Yagami",
+	 * "Lie", null, null, null,null)); Mono<Comentarios> comentariosAlumnoMono =
+	 * Mono.fromCallable(()->{ Comentarios comentarios = new Comentarios();
+	 * comentarios.addComentario("¡hola Yagami, que tal!");
+	 * comentarios.addComentario("¡alumno registrado!");
+	 * comentarios.addComentario("¡alumno registrado!"); return comentarios; });
+	 * AlumnoMono.flatMap(a -> comentariosAlumnoMono.map(c -> new
+	 * AlumnoComentarios(a, c))) .subscribe(); }
+	 */
+		  
+		  
+		  
 			}
 	

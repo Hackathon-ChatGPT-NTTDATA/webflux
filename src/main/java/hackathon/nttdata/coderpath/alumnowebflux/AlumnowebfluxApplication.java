@@ -11,6 +11,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import com.google.common.eventbus.Subscribe;
 
 import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.AlumnoComentarios;
 import hackathon.nttdata.coderpath.alumnowebflux.documents.Comentarios;
 import lombok.RequiredArgsConstructor;
 
@@ -51,7 +52,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		System.out.println("-------------------ejemplo 8------------------------------------");
 		ejemplo8();
 		System.out.println("-------------------ejemplo 9------------------------------------");
-	//	ejemplo9();
+		ejemplo9();
 		}
 		
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
@@ -290,20 +291,19 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 	}
 		  	
 			
-	/*
-	 * public void ejemplo9() {
-	 * 
-	 * Mono<Alumno> alumnoMono = Mono.fromCallable(()->new Alumno(null, "Yagami",
-	 * "Lie", null, null, null,null)); Mono<Comentarios> comentariosAlumnoMono =
-	 * Mono.fromCallable(()->{ Comentarios comentarios = new Comentarios();
-	 * comentarios.addComentario("¡hola Yagami, que tal!");
-	 * comentarios.addComentario("¡alumno registrado!");
-	 * comentarios.addComentario("¡alumno registrado!"); return comentarios; });
-	 * AlumnoMono.flatMap(a -> comentariosAlumnoMono.map(c -> new
-	 * AlumnoComentarios(a, c))) .subscribe(); }
-	 */
-		  
-		  
-		  
+				
+		  public void ejemplo9() {
+			 
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
+		    	  Comentarios comentarios = new Comentarios();
+		    	  comentarios.addComentarios("¡hola Yagami, que tal!");
+		    	  comentarios.addComentarios("¡alumno registrado!");
+		    	  comentarios.addComentarios("¡alumno registrado!");
+		    	  return comentarios;
+		      });
+		      alumnoMono.flatMap(a -> comentariosAlumnoMono.map(c -> new AlumnoComentarios(a, c)))
+		      .subscribe(ac -> log.info(ac.toString()));
+		  }
 			}
 	

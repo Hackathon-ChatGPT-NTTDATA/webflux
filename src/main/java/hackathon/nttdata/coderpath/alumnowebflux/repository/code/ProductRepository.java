@@ -14,3 +14,4 @@ public interface ProductRepository extends ReactiveMongoRepository<Product, Inte
 	@Query("SELECT * FROM product WHERE id <> :id AND name = :name")
 	Mono<Product> repeatedName(int id, String name);
 }
+ 

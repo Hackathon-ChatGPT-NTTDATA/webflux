@@ -12,7 +12,8 @@ import lombok.Value;
 @Document(collection = "customers")
 public class CustomerModel {
 	
-	@Id String customerId;
+	@Id 
+	String customerId;
 	String companyName;
 	String CompanyEmail;
 	String taxId;

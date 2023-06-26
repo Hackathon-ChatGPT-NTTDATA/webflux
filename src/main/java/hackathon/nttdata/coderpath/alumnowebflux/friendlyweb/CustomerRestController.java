@@ -23,8 +23,6 @@ import reactor.core.publisher.Mono;
 @RequestMapping(
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE)
-
-
 public class CustomerRestController {
 	
 CustomerService customerService;

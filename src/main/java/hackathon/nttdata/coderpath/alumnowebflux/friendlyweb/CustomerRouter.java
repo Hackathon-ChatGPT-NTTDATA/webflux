@@ -39,7 +39,7 @@ public class CustomerRouter {
       
 //      configuration.applyPermitDefaultValues();
       
-      configuration.setAllowedOrigins(List.of("http://localhost:8080"));
+      configuration.setAllowedOrigins(List.of("http://localhost:8090"));
       configuration.setAllowedMethods(List.of("POST", "GET", "PUT", "DELETE"));
       configuration.setAllowedHeaders(List.of("X-USER-ID"));
       

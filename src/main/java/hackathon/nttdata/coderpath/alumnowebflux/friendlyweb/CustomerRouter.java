@@ -13,11 +13,11 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
-//@Configuration
+@Configuration
 public class CustomerRouter {
 	
 	
-//  @Bean
+  @Bean
   RouterFunction<ServerResponse> customerEndpoint(CustomerHandler handler){
       return RouterFunctions
               .route(POST("/customers").and(accept(MediaType.APPLICATION_JSON)),
@@ -33,11 +33,11 @@ public class CustomerRouter {
               
   }
   
-//  @Bean
+  @Bean
   CorsWebFilter corsWebFilter(){
       CorsConfiguration configuration = new CorsConfiguration();
       
-//      configuration.applyPermitDefaultValues();
+      configuration.applyPermitDefaultValues();
       
       configuration.setAllowedOrigins(List.of("http://localhost:8090"));
       configuration.setAllowedMethods(List.of("POST", "GET", "PUT", "DELETE"));

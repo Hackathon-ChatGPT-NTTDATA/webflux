@@ -1,16 +1,24 @@
 package hackathon.nttdata.coderpath.alumnowebflux.documents.codewebflux;
 
-import org.springframework.data.annotation.Id;
+import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+
 @Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Document(collection = "product-chatgpt-hackathon-nttdata")
 public class Product {
 
 	@Id

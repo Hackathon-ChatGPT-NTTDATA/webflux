@@ -1,6 +1,8 @@
 package hackathon.nttdata.coderpath.alumnowebflux.services;
 
 import hackathon.nttdata.coderpath.alumnowebflux.documents.Alumno;
+import hackathon.nttdata.coderpath.alumnowebflux.documents.dtowebclient.Cursos;
+
 import java.util.Map;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,9 +19,18 @@ public interface AlumnoService {
 
 	Map<String, Object> balanceadorTest();
 
-	
-	
-	
-	
-	
+	/*
+	 * seccion WEBCLIENT
+	 */
+
+	Flux<Cursos> findAll();
+
+	Mono<Cursos> findCursosById(String id);
+
+	Mono<Cursos> save(Cursos document);
+
+	Mono<Cursos> update(Cursos document, String id);
+
+	Mono<Void> delete(String id);
+
 }

@@ -25,7 +25,11 @@ public class ProductHandler {
 
 	    public Mono<ServerResponse> getAll(ServerRequest request) {
 	        Flux<Product> products = productService.getAll();
-	        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(products, Product.class);
+	        
+	        return ServerResponse
+	        		.ok()
+	        		.contentType(MediaType.APPLICATION_JSON)
+	        		.body(products, Product.class);
 	    }
 
 	    public Mono<ServerResponse> getOne(ServerRequest request) {

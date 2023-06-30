@@ -25,7 +25,11 @@ public class ApplicationConfiguration {
 	@Bean
 	public WebClient registrarWebClient() {
 
+		
+		
 		return WebClient.create(urlCursos);
+		
+		
 	}
 
 }

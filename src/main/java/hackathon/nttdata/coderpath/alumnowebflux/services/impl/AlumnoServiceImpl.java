@@ -72,6 +72,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 	@Override
 	public Flux<Cursos> findAll() {
 		// TODO Auto-generated method stub
+		System.out.println("ruta de cursos: " + client.toString());
 		return client
 				.get()
 				.uri("/all")
@@ -136,6 +137,15 @@ public class AlumnoServiceImpl implements AlumnoService {
 				.uri("/delete-cursos-asset/{id}", Collections.singletonMap("id", id))
 				.exchange()
 				.then();
+	}
+
+	@Override
+	public Map<String, Object> rutaWebClientTest() {
+		// TODO Auto-generated method stub
+		Map<String, Object> response = Maps.newHashMap();
+		response.put("balanceador", configuration.getUrlCursos());
+		response.put("personal_asset", findAll());
+		return response;
 	}
 
 }

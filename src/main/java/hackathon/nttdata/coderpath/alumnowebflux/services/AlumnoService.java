@@ -18,6 +18,8 @@ public interface AlumnoService {
 	Mono<Void> delete(Alumno document);
 
 	Map<String, Object> balanceadorTest();
+	
+	Map<String, Object> rutaWebClientTest();
 
 	/*
 	 * seccion WEBCLIENT

@@ -1,6 +1,6 @@
 package hackathon.nttdata.coderpath.alumnowebflux.services.cursosrouter;
 
-import org.springframework.boot.autoconfigure.web.WebProperties;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
@@ -9,6 +9,9 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import hackathon.nttdata.coderpath.alumnowebflux.controller.handler.CursoHandler;
+
+
+
 @Configuration
 public class RouterConfig {
 	

@@ -36,6 +36,10 @@ import org.springframework.http.MediaType;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+
+
+
+
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -67,6 +71,11 @@ public class AlumnoController {
 	@GetMapping("/balanceador-test")
 	public ResponseEntity<?> balanceadorTest() {
 		return ResponseEntity.ok(service.balanceadorTest());
+	}
+	
+	@GetMapping("/webclient-test")
+	public ResponseEntity<?> rutaWebClientTest() {
+		return ResponseEntity.ok(service.rutaWebClientTest());
 	}
 
 	@GetMapping("/all")

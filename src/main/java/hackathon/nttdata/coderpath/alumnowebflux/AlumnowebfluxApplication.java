@@ -15,6 +15,9 @@ import hackathon.nttdata.coderpath.alumnowebflux.documents.AlumnoComentarios;
 import hackathon.nttdata.coderpath.alumnowebflux.documents.Comentarios;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -23,9 +26,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Flow.Subscriber;
 
+
 @EnableEurekaClient
 @SpringBootApplication
 public class AlumnowebfluxApplication implements CommandLineRunner {
+	
+
 
 	private static final Logger log = LoggerFactory.getLogger(AlumnowebfluxApplication.class);
 
@@ -53,6 +59,12 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		ejemplo8();
 		System.out.println("-------------------ejemplo 9------------------------------------");
 		ejemplo9();
+		System.out.println("-------------------ejemplo 10------------------------------------");
+		ejemplo10();
+		System.out.println("-------------------ejemplo 11------------------------------------");
+		ejemplo11();
+		System.out.println("-------------------ejemplo 12------------------------------------");
+		ejemplo12();
 		}
 		
 		/* Flux<String> nombres = Flux.just("Joffre", "tangiro", "Mila", "Diego", "Joffre", "tangiro", "Mila", "Diego")
@@ -305,5 +317,53 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		      alumnoMono.flatMap(a -> comentariosAlumnoMono.map(c -> new AlumnoComentarios(a, c)))
 		      .subscribe(ac -> log.info(ac.toString()));
 		  }
+		  
+		  public void ejemplo10() {
+			  
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
+		    	  Comentarios comentarios = new Comentarios();
+		    	  comentarios.addComentarios("¡hola Yagami, que tal!");
+		    	  comentarios.addComentarios("¡alumno registrado!");
+		    	  comentarios.addComentarios("¡alumno buenas suerte!");
+		    	  return comentarios;
+		      });
+		      Mono<AlumnoComentarios> alumnoConComentario = alumnoMono
+		    		  .zipWith(comentariosAlumnoMono, (alumno, comentariosAlumno) -> new AlumnoComentarios(alumno,comentariosAlumno));
+		               alumnoConComentario.subscribe(ac -> log.info(ac.toString()));
+			  
+			  
+			  
+		  }
+		  public void ejemplo11() {
+			  
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
+		    	  Comentarios comentarios = new Comentarios();
+		    	  comentarios.addComentarios("¡hola Yagami, que tal!");
+		    	  comentarios.addComentarios("¡alumno registrado!");
+		    	  comentarios.addComentarios("¡alumno buenas suerte!");
+		    	  return comentarios;
+		      });
+		      Mono<AlumnoComentarios> alumnoConComentario = alumnoMono
+		    		  .zipWith(comentariosAlumnoMono)
+		    		  .map(tuple ->{
+		    			  Alumno a = tuple.getT1();
+		    			  Comentarios c =tuple.getT2();
+		    			  return new AlumnoComentarios(a,c);
+		    			  
+		    		  });
+		               alumnoConComentario.subscribe(ac -> log.info(ac.toString()));
+			  
+			  
+			  
+		  }
+		  public void ejemplo12() {
+			  /*RANGO*/
+		      Flux.just(1, 2, 3, 4)
+		      .map(i-> (i*2))
+		      .zipWith(Flux.range(0, 4), (uno, dos) -> String.format("Primer flux: %d, Segundo flux: %d", uno,dos))
+		      .subscribe(texto -> log.info(texto));			  
+		      }
 			}
 	

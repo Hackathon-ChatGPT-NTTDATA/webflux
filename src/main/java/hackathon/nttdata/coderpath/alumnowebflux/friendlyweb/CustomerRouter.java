@@ -16,7 +16,6 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 @Configuration
 public class CustomerRouter {
 	
-	
   @Bean
   RouterFunction<ServerResponse> customerEndpoint(CustomerHandler handler){
       return RouterFunctions
@@ -32,14 +31,13 @@ public class CustomerRouter {
                       handler::putCustomer);
               
   }
-  
   @Bean
   CorsWebFilter corsWebFilter(){
       CorsConfiguration configuration = new CorsConfiguration();
       
       configuration.applyPermitDefaultValues();
       
-      configuration.setAllowedOrigins(List.of("http://localhost:8090"));
+      configuration.setAllowedOrigins(List.of("http://localhost:8080"));
       configuration.setAllowedMethods(List.of("POST", "GET", "PUT", "DELETE"));
       configuration.setAllowedHeaders(List.of("X-USER-ID"));
       

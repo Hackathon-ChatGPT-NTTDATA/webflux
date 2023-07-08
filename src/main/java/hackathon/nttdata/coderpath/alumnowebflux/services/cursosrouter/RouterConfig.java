@@ -18,7 +18,10 @@ public class RouterConfig {
 	@Bean
     public RouterFunction<ServerResponse> rutas(CursoHandler handler){
         return  route(GET("/webclient"), handler::listar)
-        		.andRoute(GET("/webclient/{id}"), handler::getOne);
+        		.andRoute(GET("/webclient/{id}"), handler::getOne)
+        		.andRoute(POST("/webclient/create-cursos"), handler::save)
+        		.andRoute(PUT("/webclient/update-cursos/{id}"), handler::update)
+        		.andRoute(DELETE("/webclient/delete-cursos/{id}"), handler::delete);
     }
 
 }

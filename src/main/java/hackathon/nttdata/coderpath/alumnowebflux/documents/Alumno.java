@@ -10,36 +10,31 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "alumno-chatgpt-hackathon-nttdata")
 public class Alumno {
 
-    @Id
-    private String id;
+	@Id
+	private String id;
 
-    private String nombre;
+	private String nombre;
 
-    private String apellido;
+	private String apellido;
 
-    private String email;
-    
- 
+	private String email;
+
 	@JsonIgnore
 	private byte[] foto;
-	
-	
-    private String rutafoto;
 
+	private String rutafoto;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createAt;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createAt;
 
 	public Alumno(String nombre, String apellido, String email, String rutafoto, Date createAt) {
-	
+
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -47,12 +42,8 @@ public class Alumno {
 		this.createAt = createAt;
 	}
 
-
 	public Alumno(String string, String string2) {
 		// TODO Auto-generated constructor stub
 	}
-
-
-    
 
 }

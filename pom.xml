@@ -144,6 +144,8 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -174,6 +176,8 @@
 				<artifactId>jaxb-runtime</artifactId>
 			</dependency>
 		</dependencies>
+		
+		
 	</dependencyManagement>
 	<build>
 		<plugins>

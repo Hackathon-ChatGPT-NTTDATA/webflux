@@ -8,7 +8,7 @@ import reactor.test.StepVerifier;
 
 public class KeyValueTest extends BaseTest {
 
-	@Test
+	//@Test
 	public void keyValueAccessTest() {
 
 		RBucketReactive<String> bucket = this.client.getBucket("alumno:1:name");

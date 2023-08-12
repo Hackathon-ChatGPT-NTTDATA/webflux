@@ -90,7 +90,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 		return client
 				.get()
-				.uri("/{id}", params)
+				.uri("/id/{id}", params)
 				.accept(APPLICATION_JSON_UTF8)
 				.retrieve()
 				.bodyToMono(Cursos.class);

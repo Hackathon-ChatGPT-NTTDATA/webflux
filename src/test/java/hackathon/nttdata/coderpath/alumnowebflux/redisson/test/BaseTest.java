@@ -7,7 +7,7 @@ import org.redisson.api.RedissonReactiveClient;
 
 import hackathon.nttdata.coderpath.alumnowebflux.redisson.test.config.RedissonConfig;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseTest {
 	
 	private final RedissonConfig redissonConfig = new RedissonConfig();

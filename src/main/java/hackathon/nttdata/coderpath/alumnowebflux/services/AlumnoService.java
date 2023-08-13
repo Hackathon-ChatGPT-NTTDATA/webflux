@@ -11,11 +11,11 @@ public interface AlumnoService {
 
 	Mono<Alumno> findById(String id);
 
-	Flux<Alumno> findAlls();
+	Flux<Alumno> findAlumonos();
 
-	Mono<Alumno> saves(Alumno document);
+	Mono<Alumno> saveAlumno(Alumno document);
 
-	Mono<Void> delete(Alumno document);
+	Mono<Void> deleteAlumno(Alumno document);
 
 	Map<String, Object> balanceadorTest();
 	
@@ -25,14 +25,19 @@ public interface AlumnoService {
 	 * seccion WEBCLIENT
 	 */
 
-	Flux<Cursos> findAll();
+	Flux<Cursos> findCursos();
 
 	Mono<Cursos> findCursosById(String id);
 
-	Mono<Cursos> save(Cursos document);
+	Mono<Cursos> saveCurso(Cursos document);
 
-	Mono<Cursos> update(Cursos document, String id);
+	Mono<Cursos> updateCurso(Cursos document, String id);
 
-	Mono<Void> delete(String id);
+	Mono<Void> deleteCurso(String id);
+	
+	
+
+	//con Alumno y Curso
+	Mono<Alumno> savesAlumnoCurso(Alumno document, String cursoId);
 
 }

@@ -1,6 +1,7 @@
 package hackathon.nttdata.coderpath.alumnowebflux.documents;
 
 import java.util.Date;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import hackathon.nttdata.coderpath.alumnowebflux.documents.dtowebclient.Cursos;
 
 @Data
 @AllArgsConstructor
@@ -30,6 +33,9 @@ public class Alumno {
 
 	private String rutafoto;
 
+	private List<Cursos> cursos;
+	
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 

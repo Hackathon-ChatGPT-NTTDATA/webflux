@@ -35,7 +35,7 @@ public class CursoHandler {
 		return ServerResponse
 				.ok()
 				.contentType(APPLICATION_JSON_UTF8)
-				.body(service.findAll(), Cursos.class);
+				.body(service.findCursos(), Cursos.class);
 	}
 
 	public Mono<ServerResponse> getOne(ServerRequest request) {
@@ -56,7 +56,7 @@ public class CursoHandler {
 	        return dtoMono.flatMap(productDto -> ServerResponse
 	        		.ok()
 	        		.contentType(MediaType.APPLICATION_JSON)
-	        		.body(service.save(productDto), Cursos.class));
+	        		.body(service.saveCurso(productDto), Cursos.class));
 	    }
 
 	    public Mono<ServerResponse> update(ServerRequest request) {
@@ -66,7 +66,7 @@ public class CursoHandler {
 	        return dtoMono.flatMap(c -> ServerResponse
 	        		.ok()
 	        		.contentType(MediaType.APPLICATION_JSON)
-	        		.body(service.update(c, id), Cursos.class));
+	        		.body(service.updateCurso(c, id), Cursos.class));
 	    }
 
 	    public Mono<ServerResponse> delete(ServerRequest request) {
@@ -74,7 +74,7 @@ public class CursoHandler {
 	        return ServerResponse
 	        		.ok()
 	        		.contentType(MediaType.APPLICATION_JSON)
-	        		.body(service.delete(id), Cursos.class);
+	        		.body(service.deleteCurso(id), Cursos.class);
 	    }
 	
 	

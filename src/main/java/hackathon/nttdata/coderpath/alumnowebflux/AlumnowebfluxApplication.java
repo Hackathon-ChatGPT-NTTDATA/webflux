@@ -253,14 +253,14 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		
 		
 		List<Alumno> alumnosList = new ArrayList<>();
-		 alumnosList.add(new Alumno(null, "Joffre", "As", null, null, null,null));		
-		 alumnosList.add(new Alumno(null, "Tangiro", "Yamaka", null, null, null,null)); 
-		 alumnosList.add(new Alumno(null, "Yagami", "Lie", null, null, null,null)); 
-		 alumnosList.add(new Alumno(null, "Mila", "Happy", null, null, null,null));
-		 alumnosList.add(new Alumno(null, "Diego", "SANTOS", null, null, null,null)); 
-		 alumnosList.add(new Alumno(null, "Tangiro", "Mosque", null, null, null,null)); 
-		  alumnosList.add(new Alumno(null, "Pedro", "Pucho", null, null, null,null));
-		  alumnosList.add(new Alumno(null, "Jose", "lan", null, null, null,null));
+		 alumnosList.add(new Alumno(null, "Joffre", "As", null, null, null,null,null));		
+		 alumnosList.add(new Alumno(null, "Tangiro", "Yamaka", null, null, null,null,null)); 
+		 alumnosList.add(new Alumno(null, "Yagami", "Lie", null, null, null,null,null)); 
+		 alumnosList.add(new Alumno(null, "Mila", "Happy", null, null, null,null,null));
+		 alumnosList.add(new Alumno(null, "Diego", "SANTOS", null, null, null,null,null)); 
+		 alumnosList.add(new Alumno(null, "Tangiro", "Mosque", null, null, null,null,null)); 
+		  alumnosList.add(new Alumno(null, "Pedro", "Pucho", null, null, null,null,null));
+		  alumnosList.add(new Alumno(null, "Jose", "lan", null, null, null,null,null));
 		
 		
 		
@@ -286,14 +286,14 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		
 		
 		List<Alumno> alumnosList = new ArrayList<>();
-		 alumnosList.add(new Alumno(null, "Joffre", "As", null, null, null,null));		
-		 alumnosList.add(new Alumno(null, "Tangiro", "Yamaka", null, null, null,null)); 
-		 alumnosList.add(new Alumno(null, "Yagami", "Lie", null, null, null,null)); 
-		 alumnosList.add(new Alumno(null, "Mila", "Happy", null, null, null,null));
-		 alumnosList.add(new Alumno(null, "Diego", "SANTOS", null, null, null,null)); 
-		 alumnosList.add(new Alumno(null, "Tangiro", "Mosque", null, null, null,null)); 
-		  alumnosList.add(new Alumno(null, "Pedro", "Pucho", null, null, null,null));
-		  alumnosList.add(new Alumno(null, "Jose", "lan", null, null, null,null));
+		 alumnosList.add(new Alumno(null, "Joffre", "As", null, null, null,null,null));		
+		 alumnosList.add(new Alumno(null, "Tangiro", "Yamaka", null, null, null,null,null)); 
+		 alumnosList.add(new Alumno(null, "Yagami", "Lie", null, null, null,null,null)); 
+		 alumnosList.add(new Alumno(null, "Mila", "Happy", null, null, null,null,null));
+		 alumnosList.add(new Alumno(null, "Diego", "SANTOS", null, null, null,null,null)); 
+		 alumnosList.add(new Alumno(null, "Tangiro", "Mosque", null, null, null,null,null)); 
+		  alumnosList.add(new Alumno(null, "Pedro", "Pucho", null, null, null,null,null));
+		  alumnosList.add(new Alumno(null, "Jose", "lan", null, null, null,null,null));
 		  
 		  Flux.fromIterable(alumnosList)
 		  .collectList()
@@ -306,7 +306,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 				
 		  public void ejemplo9() {
 			 
-		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null,null));
 		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
 		    	  Comentarios comentarios = new Comentarios();
 		    	  comentarios.addComentarios("¡hola Yagami, que tal!");
@@ -320,7 +320,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		  
 		  public void ejemplo10() {
 			  
-		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null,null));
 		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
 		    	  Comentarios comentarios = new Comentarios();
 		    	  comentarios.addComentarios("¡hola Yagami, que tal!");
@@ -337,7 +337,7 @@ public class AlumnowebfluxApplication implements CommandLineRunner {
 		  }
 		  public void ejemplo11() {
 			  
-		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null));
+		      Mono<Alumno> alumnoMono = Mono.fromCallable(()-> new Alumno(null, "Yagami", "Lie", null, null, null,null,null));
 		      Mono<Comentarios> comentariosAlumnoMono = Mono.fromCallable(()->{
 		    	  Comentarios comentarios = new Comentarios();
 		    	  comentarios.addComentarios("¡hola Yagami, que tal!");

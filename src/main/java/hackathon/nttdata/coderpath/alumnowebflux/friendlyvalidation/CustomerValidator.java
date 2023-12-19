@@ -6,7 +6,7 @@ import hackathon.nttdata.coderpath.alumnowebflux.friendlyvalidation.BaseValidato
 
 import hackathon.nttdata.coderpath.alumnowebflux.friendlyvalidation.CustomerValidator;
 
-import javax.validation.Validator;
+import jakarta.validation.Validator;
 
 import hackathon.nttdata.coderpath.alumnowebflux.documents.friendly.models.CustomerModel;
 import reactor.core.publisher.Mono;

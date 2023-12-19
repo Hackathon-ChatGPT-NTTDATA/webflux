@@ -50,7 +50,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 		String id = request.pathVariable(idx);
 
-		return this.findCursosById(id).flatMap(c -> ServerResponse.ok().contentType(APPLICATION_JSON_UTF8).syncBody(c)
+		return this.findCursosById(id).flatMap(c -> ServerResponse.ok().contentType(APPLICATION_JSON).syncBody(c)
 				.switchIfEmpty(ServerResponse.notFound().build()));
 	}
 
@@ -92,7 +92,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 	public Flux<Cursos> findCursos() {
 		// TODO Auto-generated method stub
 		System.out.println("ruta de cursos: " + client.toString());
-		return client.get().uri("/all").accept(APPLICATION_JSON_UTF8).exchange()
+		return client.get().uri("/all").accept(APPLICATION_JSON).exchange()
 				.flatMapMany(response -> response.bodyToFlux(Cursos.class));
 	}
 
@@ -103,7 +103,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 		params.put("id", id);
 
-		return client.get().uri("/id/{id}", params).accept(APPLICATION_JSON_UTF8).retrieve().bodyToMono(Cursos.class);
+		return client.get().uri("/id/{id}", params).accept(APPLICATION_JSON).retrieve().bodyToMono(Cursos.class);
 		// .exchange()
 		// .flatMap(response -> response.bodyToMono(Cursos.class));
 
@@ -112,7 +112,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 	@Override
 	public Mono<Cursos> saveCurso(Cursos document) {
 		// TODO Auto-generated method stub
-		return client.post().uri("/create-cursos").accept(APPLICATION_JSON_UTF8).contentType(APPLICATION_JSON_UTF8)
+		return client.post().uri("/create-cursos").accept(APPLICATION_JSON).contentType(APPLICATION_JSON)
 				.body(fromObject(document))
 				// .syncBody(document)
 				.retrieve().bodyToMono(Cursos.class);
@@ -121,8 +121,8 @@ public class AlumnoServiceImpl implements AlumnoService {
 	@Override
 	public Mono<Cursos> updateCurso(Cursos document, String id) {
 		// TODO Auto-generated method stub
-		return client.put().uri("/update-cursos/{id}", Collections.singletonMap("id", id)).accept(APPLICATION_JSON_UTF8)
-				.contentType(APPLICATION_JSON_UTF8)
+		return client.put().uri("/update-cursos/{id}", Collections.singletonMap("id", id)).accept(APPLICATION_JSON)
+				.contentType(APPLICATION_JSON)
 				// .body(fromObject(document))
 				.syncBody(document).retrieve().bodyToMono(Cursos.class);
 	}

@@ -2,7 +2,7 @@ package hackathon.nttdata.coderpath.alumnowebflux.friendlyvalidation;
 
 import java.util.List;
 
-import javax.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

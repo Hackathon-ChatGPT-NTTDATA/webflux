@@ -34,7 +34,7 @@ public class CursoHandler {
 
 		return ServerResponse
 				.ok()
-				.contentType(APPLICATION_JSON_UTF8)
+				.contentType(APPLICATION_JSON)
 				.body(service.findCursos(), Cursos.class);
 	}
 
@@ -44,7 +44,7 @@ public class CursoHandler {
 
 		return service.findCursosById(id).flatMap(c -> ServerResponse
 				.ok()
-				.contentType(APPLICATION_JSON_UTF8)
+				.contentType(APPLICATION_JSON)
 				.syncBody(c)
 				.switchIfEmpty(ServerResponse.notFound()
 				.build()));

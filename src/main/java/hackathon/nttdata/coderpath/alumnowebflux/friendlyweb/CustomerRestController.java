@@ -28,7 +28,7 @@ public class CustomerRestController {
 CustomerService customerService;
     
     @GetMapping("/customer/{id}")
-    Publisher<ResponseEntity<CustomerModel>> getCustomerById (@PathVariable("id") String id){
+    Publisher<ResponseEntity<CustomerModel>> getCustomerById (@PathVariable String id){
         return customerService.findCustomerById(id)
                 .map(customer -> ResponseEntity.ok(customer))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
@@ -50,7 +50,7 @@ CustomerService customerService;
     }
     
     @DeleteMapping("/customer/{id}")
-    Publisher<Void> deleteCustomer(@PathVariable("id") String id){
+    Publisher<Void> deleteCustomer(@PathVariable String id){
         return customerService.removeCustomer(id);
     }
 

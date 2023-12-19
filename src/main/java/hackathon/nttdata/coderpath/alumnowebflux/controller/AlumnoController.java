@@ -6,7 +6,7 @@ import hackathon.nttdata.coderpath.alumnowebflux.services.impl.KafkaProducer;
 
 import java.util.Date;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

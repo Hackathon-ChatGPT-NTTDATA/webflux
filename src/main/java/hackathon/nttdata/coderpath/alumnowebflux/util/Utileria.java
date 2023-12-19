@@ -28,7 +28,7 @@ import marvin.image.MarvinImage;*/
 
 import org.imgscalr.Scalr;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -8,5 +8,5 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 FROM openjdk:17-alpine
 EXPOSE 80
-COPY --from=build /home/app/target/cursos-0.0.1-SNAPSHOT.jar app/app.jar
+COPY --from=build /home/app/target/alumnowebflux-0.0.1-SNAPSHOT.jar app/app.jar
 ENTRYPOINT ["java", "-jar","/app/app.jar"]

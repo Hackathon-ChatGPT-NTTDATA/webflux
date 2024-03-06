@@ -26,8 +26,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+ 
       - name: Build with Maven
-        run: mvn -B package -Dmaven.test.skip=true --file pom.xml
+        run: mvn -DskipTests -B package --file pom.xml
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2

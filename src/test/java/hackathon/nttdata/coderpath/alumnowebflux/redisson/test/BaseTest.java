@@ -7,32 +7,24 @@ import org.redisson.api.RedissonReactiveClient;
 
 import hackathon.nttdata.coderpath.alumnowebflux.redisson.test.config.RedissonConfig;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseTest {
 	
-	private final RedissonConfig redissonConfig = new RedissonConfig();
-	protected RedissonReactiveClient client;
-
-	@BeforeAll
-	public void setClient() {
-
-		this.client = this.redissonConfig.getReactiveClient();
-	}
-
-	@AfterAll
-	public void shutdown() {
-		this.client.shutdown();
-	}
-	
-	
-	protected void sleep(long millis) {
-		try {
-			Thread.sleep(millis);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	/*
+	 * private final RedissonConfig redissonConfig = new RedissonConfig(); protected
+	 * RedissonReactiveClient client;
+	 * 
+	 * @BeforeAll public void setClient() {
+	 * 
+	 * this.client = this.redissonConfig.getReactiveClient(); }
+	 * 
+	 * @AfterAll public void shutdown() { this.client.shutdown(); }
+	 * 
+	 * 
+	 * protected void sleep(long millis) { try { Thread.sleep(millis); } catch
+	 * (InterruptedException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } }
+	 */
 	
 
 }

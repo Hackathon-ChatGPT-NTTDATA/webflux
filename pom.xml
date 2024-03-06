@@ -20,8 +20,15 @@
 		<joffre.imgscalr.version>4.2</joffre.imgscalr.version>
 		<joffre.servletapi.version>4.0.1</joffre.servletapi.version>
 		<joffre.thumbnailator.version>0.4.14</joffre.thumbnailator.version>
+		<pytorch.jdl>2.1.0</pytorch.jdl>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.pytorch</groupId>
+			<artifactId>pytorch_java_only</artifactId>
+			<version>${pytorch.jdl}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.imgscalr</groupId>
 			<artifactId>imgscalr-lib</artifactId>
